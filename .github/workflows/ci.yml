@@ -3,9 +3,9 @@ name: ci
 on:
   push:
     branches:
-      - main
+      - master
   schedule:
-    - cron: "0 22 * * *"  # 每天22:00检查
+    - cron: "1 2 * * *"  # 每天22:11检查
 
 jobs:
   autogreen:
@@ -14,6 +14,9 @@ jobs:
       contents: write
     
     steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+        
       - name: Daily random check
         id: daily_check
         run: |
